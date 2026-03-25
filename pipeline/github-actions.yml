@@ -9,7 +9,7 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
-    stpes: 
+    steps: 
       - name: Checkout repo
         uses: actions/checkout@v3
 
@@ -17,7 +17,10 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
-        uses: terraform init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate 
 
       - name: Terraform Plan
-        uses: terraform plan
+        run: terraform plan
